@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h6>Department List</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Dept Id</th>
+                        <th>Dept Name</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of deptList">
+                        <td>{{d.deptid}}</td>
+                        <td>{{d.deptname}}</td>
+                        <td>
+                            <input type="button" class="btn btn-warning" (click)="edit(d)" value="Edit">
+                            &nbsp;&nbsp;
+                            <input type="button" class="btn btn-danger" (click)="delete(d.deptid)" value="Delete">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <form [formGroup]="deptForm" (ngSubmit)="saveData()">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" formControlName="deptid" id="deptid" placeholder="name@example.com">
+                    <label for="floatingInput">Dept Id</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" formControlName="deptname" id="deptid" placeholder="name@example.com">
+                    <label for="floatingInput">Dept name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="submit" *ngIf="!isUpatebtn" value="Add" class="btn btn-primary"/>
+                    <input type="submit" *ngIf="isUpatebtn" value="Update" class="btn btn-primary"/>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
